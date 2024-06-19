@@ -1,11 +1,9 @@
-import com.codeborne.selenide.CollectionCondition;
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
 import com.codeborne.selenide.WebDriverRunner;
 
 
 import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.RepeatedTest;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.Cookie;
 
@@ -30,9 +28,6 @@ public class KiwiTest {
         SelenideElement wrapper = $(byAttribute("data-test", "ResultCardWrapper"));
         wrapper.shouldBe(Condition.visible);
 
-        /*SelenideElement wrapper = $(byAttribute("data-test","ResultCardWrapper"))
-                .waitUntil(Condition.appears, 15000);*/
-
         String price = wrapper.find("strong[class*='PriceText']").shouldNotBe(Condition.empty).getText();
         wrapper.click();
         $("div[data-test='ModalFooter'] div[class*=FooterPriceWrapper]")
@@ -54,11 +49,11 @@ public class KiwiTest {
                 .click();
 
         $(byAttribute("data-test", "BookingButton"))
-                .wait(Condition.appears, 15000)
+                //.wait(Condition.appears, 15000)
                 .click();
 
         $("div.ReservationBill-item-price")
-                .wait(Condition.appears, 15000)
+                //.wait(Condition.appears, 15000)
                 .shouldNotBe(Condition.empty);
     }
 
